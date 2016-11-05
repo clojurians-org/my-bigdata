@@ -43,5 +43,5 @@ execHiveCmd () {
   fi
 
   # hadoop 20 or newer - skip the aux_jars option. picked up from hiveconf
-  exec java -cp ${HIVE_LIB}/'*':${HIVE_CONF_DIR} $CLASS $HIVE_OPTS "$@"
+  exec java -cp ${HIVE_LIB}/'*':${HIVE_CONF_DIR} $JVM_OPTS $CLASS $HIVE_OPTS "$@"
 }

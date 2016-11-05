@@ -296,9 +296,9 @@ if [ "$DEBUG" ]; then
   if [ "$HELP" ]; then
     debug_help
     exit 0
-#  else
-#    get_debug_params "$DEBUG"
-#    export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS $HIVE_MAIN_CLIENT_DEBUG_OPTS"
+  else
+    get_debug_params "$DEBUG"
+    export JVM_OPTS="$JVM_OPTS $HIVE_MAIN_CLIENT_DEBUG_OPTS"
   fi
 fi
 
@@ -310,13 +310,13 @@ for j in $SERVICE_LIST ; do
 done
 
 ## to initialize logging for all services
-#export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -Dlog4j.configurationFile=hive-log4j2.properties "
+export JVM_OPTS="$JVM_OPTS -Dlog4j.configurationFile=hive-log4j2.properties "
 
-#if [ -f "${HIVE_CONF_DIR}/parquet-logging.properties" ]; then
-#  export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -Djava.util.logging.config.file=${HIVE_CONF_DIR}/parquet-logging.properties "
-#else
-#  export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=$bin/../conf/parquet-logging.properties "
-#fi
+if [ -f "${HIVE_CONF_DIR}/parquet-logging.properties" ]; then
+  export JVM_OPTS="$JVM_OPTS -Djava.util.logging.config.file=${HIVE_CONF_DIR}/parquet-logging.properties "
+else
+  export JVM_OPTS="$JVM_OPTS -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=$bin/../conf/parquet-logging.properties "
+fi
 
 if [ "$TORUN" = "" ] ; then
   echo "Service $SERVICE not found"
