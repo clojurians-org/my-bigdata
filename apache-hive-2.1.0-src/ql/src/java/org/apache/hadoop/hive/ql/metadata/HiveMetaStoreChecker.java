@@ -406,7 +406,7 @@ public class HiveMetaStoreChecker {
         }
 
         if (!directoryFound) {
-          allDirs.put(path, null);
+          allDirs.put(path, true);
         }
         if (!nextLevel.isEmpty()) {
           getAllLeafDirs(pool, nextLevel, allDirs, fs);

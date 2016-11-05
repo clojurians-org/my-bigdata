@@ -39,11 +39,13 @@
       <useStrictFiltering>true</useStrictFiltering>
       <useTransitiveFiltering>true</useTransitiveFiltering>
       <excludes>
+        <!--
         <exclude>org.apache.hadoop:*</exclude>
-        <exclude>org.apache.hive.hcatalog:*</exclude>
         <exclude>org.slf4j:*</exclude>
-        <exclude>log4j:*</exclude>
         <exclude>commons-configuration:commons-configuration</exclude>
+        -->
+        <exclude>org.apache.hive.hcatalog:*</exclude>
+        <exclude>log4j:*</exclude>
         <exclude>org.apache.hive:hive-jdbc:*:standalone</exclude>
       </excludes>
     </dependencySet>
@@ -77,9 +79,11 @@
       <useProjectArtifact>false</useProjectArtifact>
       <useStrictFiltering>true</useStrictFiltering>
       <useTransitiveFiltering>true</useTransitiveFiltering>
+      <!--
       <excludes>
         <exclude>org.apache.hadoop:*</exclude>
       </excludes>
+      -->
       <includes>
         <include>org.apache.hive.hcatalog:hive-webhcat:*</include>
       </includes>

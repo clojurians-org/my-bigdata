@@ -1,0 +1,10 @@
+# hive
+    mvn clean install -Pdist -DskipTests
+    cp ../conf/hive-site.xml $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/conf
+    cp ../conf/log4j2.xml $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/conf
+    cp ../jars/mysql-connector-java-5.1.39.jar $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/lib
+    cp ../jars/spark-spiderdt-0.1.0-SNAPSHOT-standalone.jar $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/lib
+    $(pwd)/apache-hive-2.1.0-src/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/bin/hive
+
+
+java -cp '/home/spiderdt/work/git/my-bigdata/apache-hive-2.1.0-src/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/lib/*' org.apache.hadoop.hive.cli.CliDriver
