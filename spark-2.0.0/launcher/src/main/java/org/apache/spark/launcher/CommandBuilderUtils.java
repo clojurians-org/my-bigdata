@@ -359,15 +359,19 @@ class CommandBuilderUtils {
     File libdir;
     if (new File(sparkHome, "RELEASE").isFile()) {
       libdir = new File(sparkHome, "jars");
+/*
       checkState(!failIfNotFound || libdir.isDirectory(),
         "Library directory '%s' does not exist.",
         libdir.getAbsolutePath());
+*/
     } else {
       libdir = new File(sparkHome, String.format("assembly/target/scala-%s/jars", scalaVersion));
       if (!libdir.isDirectory()) {
+/*
         checkState(!failIfNotFound,
           "Library directory '%s' does not exist; make sure Spark is built.",
           libdir.getAbsolutePath());
+*/
         libdir = null;
       }
     }

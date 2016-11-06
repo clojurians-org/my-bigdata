@@ -96,10 +96,11 @@ public class RemoteHiveSparkClient implements HiveSparkClient {
   }
 
   private void createRemoteClient() throws Exception {
+
     remoteClient = SparkClientFactory.createClient(conf, hiveConf);
 
     if (HiveConf.getBoolVar(hiveConf, ConfVars.HIVE_PREWARM_ENABLED) &&
-        hiveConf.get("spark.master").startsWith("yarn-")) {
+        hiveConf.get("spark.master").startsWith("yarn")) {
       int minExecutors = getExecutorsToWarm();
       if (minExecutors <= 0) {
         return;
@@ -172,7 +173,7 @@ public class RemoteHiveSparkClient implements HiveSparkClient {
 
   @Override
   public SparkJobRef execute(final DriverContext driverContext, final SparkWork sparkWork) throws Exception {
-    if (hiveConf.get("spark.master").startsWith("yarn-") && !remoteClient.isActive()) {
+    if (hiveConf.get("spark.master").startsWith("yarn") && !remoteClient.isActive()) {
       // Re-create the remote client if not active any more
       close();
       createRemoteClient();

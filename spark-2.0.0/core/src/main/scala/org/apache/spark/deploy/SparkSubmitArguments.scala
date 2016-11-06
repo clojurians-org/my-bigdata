@@ -250,6 +250,7 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
       SparkSubmit.printErrorAndExit("--py-files given but primary resource is not a Python script")
     }
 
+/*
     if (master.startsWith("yarn")) {
       val hasHadoopEnv = env.contains("HADOOP_CONF_DIR") || env.contains("YARN_CONF_DIR")
       if (!hasHadoopEnv && !Utils.isTesting) {
@@ -257,6 +258,7 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
           "either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.")
       }
     }
+*/
 
     if (proxyUser != null && principal != null) {
       SparkSubmit.printErrorAndExit("Only one of --proxy-user or --principal can be provided.")

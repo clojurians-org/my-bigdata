@@ -4,3 +4,4 @@ apache-hive-2.1.0-src/service-rpc/src/gen
 apache-hive-2.1.0-src/data
 spark-2.0.0/sql/hive/src/test
 jars
+**/**/target
