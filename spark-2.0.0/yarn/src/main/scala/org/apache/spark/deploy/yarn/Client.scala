@@ -497,10 +497,7 @@ private[spark] class Client(
           // No configuration, so fall back to uploading local jar files.
           logWarning(s"Neither ${SPARK_JARS.key} nor ${SPARK_ARCHIVE.key} is set, falling back " +
             "to uploading libraries under SPARK_HOME.")
-/*
-          val jarsDir = new File(YarnCommandBuilderUtils.findJarsDir(
-            sparkConf.getenv("SPARK_HOME")))
-*/
+          val jarsDir = YarnCommandBuilderUtils.findJarsDir(sparkConf.getenv("SPARK_HOME"))
           val jarsArchive = File.createTempFile(LOCALIZED_LIB_DIR, ".zip",
             new File(Utils.getLocalDir(sparkConf)))
           val jarsStream = new ZipOutputStream(new FileOutputStream(jarsArchive))
@@ -508,11 +505,13 @@ private[spark] class Client(
           try {
             jarsStream.setLevel(0)
 /*
-            jarsDir.listFiles().foreach { f =>
-              if (f.isFile && f.getName.toLowerCase().endsWith(".jar") && f.canRead) {
-                jarsStream.putNextEntry(new ZipEntry(f.getName))
-                Files.copy(f, jarsStream)
-                jarsStream.closeEntry()
+            if(jarsDir != null) {
+              new File(jarsDir).listFiles().foreach { f =>
+                if (f.isFile && f.getName.toLowerCase().endsWith(".jar") && f.canRead) {
+                  jarsStream.putNextEntry(new ZipEntry(f.getName))
+                  Files.copy(f, jarsStream)
+                  jarsStream.closeEntry()
+                }
               }
             }
 */

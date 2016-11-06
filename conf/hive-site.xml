@@ -51,12 +51,16 @@
       <value>1</value>
   </property>
   <property>
-      <name>spark.hadoop.fs.defaultFS</name>
+      <name>spark.hadoop.fs.hdfs.impl</name>
+      <value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
+  </property>
+  <property>
+      <name>fs.defaultFS</name>
       <value>hdfs://192.168.1.3:9000</value>
   </property>
   <property>
-      <name>spark.hadoop.yarn.resourcemanager.hostname</name>
-      <value>192.168.1.3</value>
+      <name>spark.hadoop.fs.defaultFS</name>
+      <value>hdfs://192.168.1.3:9000</value>
   </property>
   <property>
       <name>spark.serializer</name>
@@ -74,4 +78,9 @@
       <name>hive.server2.enable.doAs</name>
       <value>false</value>
   </property>
+  <property>
+      <name>spark.yarn.jars</name>
+      <value>file:///home/spiderdt/work/git/my-bigdata/apache-hive-2.1.0-src/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/lib/hive-exec-2.1.0.jar</value>
+  </property>
+
 </configuration>
