@@ -1,9 +1,5 @@
 # hive
     mvn clean install -Pdist -DskipTests
-    cp ../conf/hive-site.xml $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/conf
-    cp ../conf/log4j2.xml $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/conf
-    cp ../jars/mysql-connector-java-5.1.39.jar $(pwd)/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/lib
-    $(pwd)/apache-hive-2.1.0-src/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/bin/hive
-
-
-/home/spiderdt/work/git/spiderdt-env/cluster/tarball/jdk1.8.0_60/jre/bin/java -classpath /home/spiderdt/work/git/my-bigdata/apache-hive-2.1.0-src/ql/target/hive-exec-2.1.0.jar org.apache.spark.deploy.SparkSubmit --properties-file /tmp/spark-submit.389963454801715183.properties --class org.apache.hive.spark.client.RemoteDriver /home/spiderdt/work/git/my-bigdata/apache-hive-2.1.0-src/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/lib/hive-exec-2.1.0.jar --remote-host client --remote-port 33725 --conf hive.spark.client.connect.timeout=1000 --conf hive.spark.client.server.connect.timeout=90000 --conf hive.spark.client.channel.log.level=null --conf hive.spark.client.rpc.max.size=52428800 --conf hive.spark.client.rpc.threads=8 --conf hive.spark.client.secret.bits=256 --conf hive.spark.client.rpc.server.address=null
+    cp conf/hive-site.xml packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/conf
+    cp conf/log4j2.xml packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/conf
+    apache-hive-2.1.0-src/packaging/target/apache-hive-2.1.0-bin/apache-hive-2.1.0-bin/bin/hive
